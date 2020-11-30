@@ -1,16 +1,19 @@
 <template>
-  <SendMsj/>
+  <Login />
+  <SendMsj />
 </template>
 
 <script>
-import SendMsj from './components/SendMsj'
+import SendMsj from "./components/SendMsj";
+import Login from "./components/Login";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    SendMsj
-  }
-}
+    SendMsj,
+    Login,
+  },
+};
 </script>
 
 <style>
