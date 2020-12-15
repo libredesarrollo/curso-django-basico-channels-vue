@@ -28,6 +28,7 @@
 <script>
 
 const axios = require('axios')
+import { VueCookieNext } from 'vue-cookie-next'
 
 export default {
     data() {
@@ -47,6 +48,9 @@ export default {
             axios.post('http://127.0.0.1:8000/api/login',data)
                 .then((res) => {
                     console.log(res)
+                    this.$root.tokenAuth=res.data
+                    VueCookieNext.setCookie('token',this.$root.tokenAuth)
+                    console.log(this.$root.tokenAuth)
                 })
                 .catch(() => {
                     console.log("Error ")
