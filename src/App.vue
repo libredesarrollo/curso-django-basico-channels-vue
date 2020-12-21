@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="tokenAuth == ''">
+    <div v-if="tokenAuth == '' || tokenAuth == null">
       <Login />
     </div>
     <div v-else>
@@ -21,7 +21,7 @@ import { VueCookieNext } from "vue-cookie-next";
 export default {
   mounted() {
     this.tokenAuth = VueCookieNext.getCookie("token");
-    console.log(this.tokenAuth);
+    //console.log(this.tokenAuthRest);
   },
   name: "App",
   components: {
@@ -32,7 +32,15 @@ export default {
   data() {
     return {
       tokenAuth: "",
+      urlApi: "http://127.0.0.1:8000/api/"
     };
+  },
+  computed: {
+    tokenAuthRest: function(){
+      let res = this.tokenAuth.split("_")
+      //console.log(res)
+      return res[0]+" "+res[1]
+    }
   },
 };
 </script>
